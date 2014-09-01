@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ForgeLTI",
+  "name": "ForgeLTI",
+  "description": "Forge wrapper of MinecraftLTI.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/instructure/ForgeLTI",
+  "updateUrl": "",
+  "authorList": ["bluej100"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
