@@ -1,7 +1,7 @@
 BukkitLTI
 =========
 
-A Forge plugin for [MinecraftLTI](https://github.com/instructure/MinecraftLTI), for integrating Forge servers with LMS applications.
+A [Forge](http://www.minecraftforge.net/wiki/) plugin for [MinecraftLTI](https://github.com/instructure/MinecraftLTI), for integrating Forge servers with LMS applications.
 
 Links
 -----
@@ -33,4 +33,4 @@ Development
 - mvn install
 - clone ForgeLTI
 - ./gradlew build
-- copy the generated jar from your build/libs directory into your Forge server's plugins directory
+- copy the generated jar from your build/libs directory into your Forge server's mods directory

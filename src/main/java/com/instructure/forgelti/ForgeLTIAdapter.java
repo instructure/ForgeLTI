@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
@@ -72,7 +71,7 @@ public class ForgeLTIAdapter implements MinecraftLTIAdapter {
 
 	@Override
 	public void setAssignmentLocation(UUID uuid, Assignment a) {
-		EntityPlayer p = plugin.getPlayer(uuid);
+		EntityPlayerMP p = plugin.getPlayer(uuid);
 		String worldName = p.worldObj.getWorldInfo().getWorldName();
 		a.setLocation(worldName, p.posX, p.posY, p.posZ, p.cameraPitch, p.cameraYaw);
 
@@ -89,10 +88,8 @@ public class ForgeLTIAdapter implements MinecraftLTIAdapter {
 	
 	@Override
 	public void teleportPlayer(UUID uuid, Assignment a) {
-		EntityPlayer p = plugin.getPlayer(uuid);
-		World w = getWorld(a.getWorldName());
-		p.setWorld(w);
+		EntityPlayerMP p = plugin.getPlayer(uuid);
+		// p.setPositionAndUpdate(a.getX(), a.getY(), a.getZ());
 		p.setPositionAndRotation(a.getX(), a.getY(), a.getZ(), a.getYaw(), a.getPitch());
-
 	}
 }

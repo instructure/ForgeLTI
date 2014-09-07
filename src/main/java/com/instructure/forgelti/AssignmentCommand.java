@@ -7,7 +7,7 @@ import com.instructure.minecraftlti.User;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 
 public class AssignmentCommand extends CommandBase {
 	private ForgeLTI plugin;
@@ -27,12 +27,12 @@ public class AssignmentCommand extends CommandBase {
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender sender) {
-		return sender instanceof EntityPlayer;
+		return sender instanceof EntityPlayerMP;
 	}
 
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) {
-		EntityPlayer player = (EntityPlayer)sender;
+		EntityPlayerMP player = (EntityPlayerMP)sender;
 
 		if (args.length < 1) {
 			plugin.sendPlayerError(player, "Format: /assignment [begin|submit|set]");

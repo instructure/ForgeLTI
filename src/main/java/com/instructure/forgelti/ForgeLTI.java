@@ -5,11 +5,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import com.avaje.ebean.EbeanServer;
 import com.instructure.minecraftlti.MinecraftLTI;
 
 import net.minecraft.command.CommandHandler;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
@@ -30,7 +28,7 @@ public class ForgeLTI
 {
     public static final String MODID = "ForgeLTI";
     public static final String MODNAME = MODID;
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "0.4.0";
     
     private ForgeLTIAdapter adapter;
     private MinecraftLTI lti;
@@ -73,11 +71,11 @@ public class ForgeLTI
         return null;
     }
     
-    public void sendPlayerMessage(EntityPlayer player, String msg) {
+    public void sendPlayerMessage(EntityPlayerMP player, String msg) {
     	player.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + msg));
     }
        
-    public void sendPlayerError(EntityPlayer player, String msg) {
+    public void sendPlayerError(EntityPlayerMP player, String msg) {
     	player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + msg));
     }
     

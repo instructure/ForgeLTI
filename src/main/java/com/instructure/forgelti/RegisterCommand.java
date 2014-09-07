@@ -7,7 +7,7 @@ import com.instructure.minecraftlti.User;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
@@ -30,12 +30,12 @@ public class RegisterCommand extends CommandBase {
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender sender) {
-		return sender instanceof EntityPlayer;
+		return sender instanceof EntityPlayerMP;
 	}
 
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) {
-		EntityPlayer player = (EntityPlayer)sender;
+		EntityPlayerMP player = (EntityPlayerMP)sender;
 		if (args.length != 1) {
 			plugin.sendPlayerError(player, "Token required");
 			return;
