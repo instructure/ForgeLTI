@@ -28,7 +28,7 @@ public class ForgeLTI
 {
     public static final String MODID = "ForgeLTI";
     public static final String MODNAME = MODID;
-    public static final String VERSION = "0.4.0";
+    public static final String VERSION = "0.4.1";
     
     private ForgeLTIAdapter adapter;
     private MinecraftLTI lti;

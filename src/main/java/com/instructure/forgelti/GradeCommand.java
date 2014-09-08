@@ -9,8 +9,7 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityCommandBlock;
+import net.minecraft.util.ChunkCoordinates;
 
 public class GradeCommand extends CommandBase {
 	private ForgeLTI plugin;
@@ -30,7 +29,7 @@ public class GradeCommand extends CommandBase {
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender sender) {
-		return sender instanceof TileEntityCommandBlock;
+		return !(sender instanceof EntityPlayerMP);
 	}
 	
 	@Override
@@ -41,9 +40,9 @@ public class GradeCommand extends CommandBase {
 		}
 		String playerName = args[0];
 		EntityPlayerMP player = null;
-		if (playerName == "@p") {
-			TileEntityCommandBlock cb = (TileEntityCommandBlock)icommandsender;
-			player = getClosestPlayer(cb);
+		if (playerName.equals("@p")) {
+			ChunkCoordinates coords = icommandsender.getPlayerCoordinates();
+			player = getClosestPlayer(coords);
 		} else {
 			player = getPlayer(playerName);
 		}
@@ -57,13 +56,14 @@ public class GradeCommand extends CommandBase {
 	    user.grade(args[1]);
 	}
 
-	private EntityPlayerMP getClosestPlayer(TileEntity entity) {
+	private EntityPlayerMP getClosestPlayer(ChunkCoordinates coords) {
 		EntityPlayerMP result = null;
 		double bestDistance = Double.MAX_VALUE;
     	for (EntityPlayerMP player : plugin.getPlayers()) {
-    		double distance = player.getDistanceSq(entity.xCoord, entity.yCoord, entity.zCoord);
+    		double distance = player.getDistanceSq(coords.posX, coords.posY, coords.posZ);
     		if (distance < bestDistance) {
     			result = player;
+    			bestDistance = distance;
     		}
         }
         return result;
