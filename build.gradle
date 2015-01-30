@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.4.1"
+version = "0.5.2"
 group= "com.instructure.forgelti"
 archivesBaseName = "forgelti"
 
@@ -35,7 +35,7 @@ configurations {
 }
 
 dependencies {
-    minecraftlti group: 'com.instructure', name: 'minecraftlti', version: "0.4.0", ext: 'jar'
+    minecraftlti group: 'com.instructure', name: 'minecraftlti', version: "0.5.2", ext: 'jar'
 }
 
 processResources
